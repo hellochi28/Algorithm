@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<conio.h>
+
+int main(){
+	int a[100],count,i,x,j,y,flag=0;
+	int hashT[50][100];
+	for(i=0;i<50;i++)
+		for(j=0;j<100;j++)
+    	hashT[i][j]=NULL;
+    	
+    	
+	printf("\n*********************** HashFunction ***********************\n");
+	printf("\nEnter number of data : ");	
+  	scanf("%d",&count);
+	printf("\n\nInput : ");
+	for(i=0;i<count;i++){
+		scanf("%d",&a[i]);
+		if(a[i]>1000)
+			flag=1;
+	}
+	if(flag==0){
+	
+		for(i=0;i<count;i++){
+			x=a[i]%50;
+			y=0;
+				while(hashT[x][y]!=NULL){
+					y++;
+				}
+				hashT[x][y]=a[i];
+		}
+	  	printf("\nOutput : ");
+	  	printf("\n\n");
+	  	
+	  	for(i=0;i<50;i++){
+	  		y=0;
+	    	printf("%3d : ",i);
+			while(hashT[i][y]!=NULL){
+				printf("%d ",hashT[i][y]);
+				y++;
+			}
+			printf("\n");
+		}
+	}
+else
+	printf("It's over 1000");
+
+
+return(0);
+}
